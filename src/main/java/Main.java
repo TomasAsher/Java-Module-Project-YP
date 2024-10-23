@@ -6,8 +6,17 @@ public class Main {
         Car[] cars = new Car[3];
 
         for (int i = 0; i < cars.length; i++) {
-            System.out.println("Введите название машины №" + (i + 1) + ":");
-            String carName = scanner.nextLine();
+            String carName;
+            while (true) {
+                System.out.println("Введите название машины №" + (i + 1) + ":");
+                carName = scanner.nextLine();
+                if (!carName.trim().isEmpty()) {
+                    break;
+                } else {
+                    System.out.println("Название не должно быть пустым. Попробуйте еще раз.");
+                }
+            }
+
             int carSpeed = enterSpeed(scanner, i + 1);
             cars[i] = new Car(carName, carSpeed);
         }
